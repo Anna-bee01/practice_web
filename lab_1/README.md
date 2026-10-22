@@ -8,5 +8,11 @@
 2. Откройте терминал в папке `lab_1`.
 3. Выполните команду:
    ```bash
-   docker compose up --build```
+   docker compose up --build
 4. Откройте в браузере: http://127.0.0.1:8000
+
+## Доступные endpoints
+1. GET / — приветствие
+2. GET /users/{user_id} — получение пользователя по ID
+3. POST /users — создание пользователя
+4. GET /search — поиск с query-параметрами
