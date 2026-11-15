@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: mydb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  web:
+    build: .
+    ports:
+      - "8005:8000"
+    environment:
+      - DATABASE_URL=postgresql://user:secret@db:5432/mydb
+      - SECRET_KEY=supersecretkey
+    depends_on:
+      - db
+
+volumes:
+  pgdata:
